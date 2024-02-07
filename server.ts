@@ -1,5 +1,5 @@
 import express, {  Request, Response , Application } from 'express';
-
+import myRoutes from './routes/routes';
 const app: Application = express();
 const port = 8000;
 
@@ -8,9 +8,9 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is Fire at http://localhost:${port}`);
+  console.log(`Server is Live at http://localhost:${port}`);
 });
 
-app.get('/healty', (req: Request, res: Response) => {
-    res.status(200).send('Hoory You are Healty');   
-});
+app.use(express.json());
+
+app.use('/api', myRoutes);
